@@ -1,0 +1,20 @@
+import lib.decorator;
+import lib.time;
+
+entity city  { 
+	/* rowid */
+	name;
+	created_at : timestamp;
+}
+
+operation insert_city (name) {
+	create city (name = decorator.decorate(name), created_at = time.now());	
+}
+
+query is_city_registered(city_name: text): boolean {
+    return (city @? { city_name }) != null;
+}
+
+query get_city(city_name: text): struct<city> {
+    return (city @ { city_name }).to_struct();
+}

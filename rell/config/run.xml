@@ -1,0 +1,17 @@
+<run wipe-db="true">
+    <nodes>
+        <config src="node-config.properties" add-signers="true" />
+        <test-config src="node-config-test.properties"/>
+    </nodes>
+    <chains>
+        <chain name="DemoCites" iid="1">
+            <config height="0">
+                <app module="demo_cities">
+                	<args module="lib.decorator">
+                        <arg key="postfix"><string>test</string></arg>
+                    </args>
+                </app>
+            </config>
+        </chain>
+    </chains>
+</run>
